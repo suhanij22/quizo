@@ -6,5 +6,5 @@ app.use(express.json());
 
 
 app.listen(3001,()=>{
-    console.log("3001 running...");
+    console.log("listennig to port 3001");
 })
