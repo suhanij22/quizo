@@ -8,10 +8,10 @@ export const registerUser=async(req:Request,res:Response)=>{
     try{
         const {email,name,password}= req.body;
 
-        const isUserExisted= await prismaClient.user.findUnique({
+        const isUserExist= await prismaClient.user.findUnique({
             where:{email}
         });
-        if(!isUserExisted)
+        if(!isUserExist)
         {
             return res.status(400).json({
                 message:"user already exists"
