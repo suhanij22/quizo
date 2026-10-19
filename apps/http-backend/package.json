@@ -11,16 +11,21 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module",
+  "type": "commonjs",
   "dependencies": {
-    "express": "^5.3.0"
+    "@repo/db": "workspace:*",
+    "bcrypt": "^6.0.0",
+    "express": "^5.3.0",
+    "jsonwebtoken": "^9.0.3"
   },
   "devDependencies": {
+    "@repo/backend-common": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@types/bcrypt": "^6.0.0",
     "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "26.4.1",
     "tsx": "^4.23.15",
-    "typescript": "7.0.2",
-    "@repo/typescript-config":"workspace:*",
-    "@repo/backend-common":"workspace:*"
+    "typescript": "7.0.2"
   }
 }
