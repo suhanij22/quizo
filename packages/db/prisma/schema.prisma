@@ -24,6 +24,13 @@ enum Difficulty{
   HARD
 }
 
+enum SessionStatus{
+  WAITING
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
 model User {
   id       String  @id @default(uuid())
   email    String  @unique
@@ -32,6 +39,7 @@ model User {
   photo    String?
   createdAt DateTime @default(now())
   quizzes Quiz[]
+  participants Participant[]
 }
 
 model Quiz{
@@ -42,6 +50,7 @@ model Quiz{
   creatorId String
   creator User @relation(fields: [creatorId],references: [id],onDelete: Cascade)
   questions Question[]
+  quizSessions QuizSession[]
 }
 
 model Question{
@@ -53,6 +62,7 @@ model Question{
   quizId String
   quiz Quiz @relation(fields: [quizId], references: [id],onDelete:Cascade)
   options Option[]
+  participantAnswers ParticipantAnswer[]
 }
 
 model Option{
@@ -61,4 +71,50 @@ model Option{
   isCorrect Boolean @default(false)
   questionId String
   question Question @relation(fields: [questionId],references: [id],onDelete: Cascade)
+  participantAnswers ParticipantAnswer[]
+}
+
+model QuizSession{
+  id String @id @default(uuid())
+  currentQuestionIndex Int @default(0)
+  status SessionStatus @default(WAITING)
+  joinCode String @unique
+  startedAt DateTime?
+  endedAt DateTime?
+  createdAt DateTime @default(now())
+  quizId String
+  quiz Quiz @relation(fields: [quizId],references: [id],onDelete: Cascade)
+  participants Participant[]
+}
+
+model Participant {
+  id String @id @default(uuid())
+  username String
+  score Int @default(0)
+  joinedAt DateTime @default(now())
+  sessionId String
+  session QuizSession @relation(fields: [sessionId],references: [id],onDelete: Cascade)
+  userId String?  //a parrticipant can be registered user or just to play a quiz using username
+  user User? @relation(fields: [userId],references: [id],onDelete: Cascade)
+  answers ParticipantAnswer[]
+
+  //no two usernames can be same
+  @@unique([sessionId,username])
+}
+
+model ParticipantAnswer{
+  id String @id @default(uuid())
+  timeTook Int
+  isCorrect Boolean
+  points Int @default(0)
+  createdAt DateTime @default(now())
+  participantId String
+  participant Participant @relation(fields: [participantId],references: [id],onDelete: Cascade)
+  questionId String
+  question Question @relation(fields: [questionId],references: [id],onDelete: Cascade)
+  optionId String
+  option Option @relation(fields: [optionId],references: [id])
+
+  //a player can only answer one time 
+  @@unique([participantId,questionId])
 }
