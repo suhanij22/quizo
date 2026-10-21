@@ -24,7 +24,7 @@ export const createSession= async (req:Request,res:Response)=>{
             })
         }
 
-        if(req.userId!=quiz.creatorId)
+        if(req.userId!==quiz.creatorId)
         {
             return res.status(403).json({
                 message:"quizz doesnt belong to this user"
@@ -55,7 +55,7 @@ export const createSession= async (req:Request,res:Response)=>{
             }
             catch(err:any)
             {
-                if(err.code!="P2002") throw err; //only retry on duplicate code
+                if(err.code!=="P2002") throw err; //only retry on duplicate code
             }
         }
         return res.status(500).json({
@@ -89,7 +89,7 @@ export const getSessionByCode= async (req:Request,res:Response)=>{
             });
         }
 
-        if(session.status!="WAITING")
+        if(session.status!=="WAITING")
         {
             return res.status(409).json({
                 message:"the session is no longer accepting participants"
