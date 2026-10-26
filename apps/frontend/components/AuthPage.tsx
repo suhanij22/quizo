@@ -3,6 +3,17 @@
 import { HTTP_BACKEND } from "@/config";
 import { useRouter } from "next/navigation";
 import React , { useState } from "react";
+import { Bricolage_Grotesque } from "next/font/google";
+ 
+
+const font = Bricolage_Grotesque({
+  subsets: ["latin"],
+  weight: ["500", "700", "800"],
+});
+ 
+const inputClass =
+  "w-full rounded-2xl border-[3px] border-[#43091f] bg-[#fff5f7] px-4 py-3.5 text-base font-bold text-[#43091f] outline-none placeholder:font-medium placeholder:text-[#43091f]/40 focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#ffd24a]";
+ 
 
 export function AuthPage({isLogin}:{isLogin:boolean}){
     const router= useRouter();
@@ -48,7 +59,7 @@ export function AuthPage({isLogin}:{isLogin:boolean}){
                 router.push("/");
             }
             else{
-                router.push("/signup");
+                router.push("/login");
             }
         }
         catch(err)
@@ -62,119 +73,39 @@ export function AuthPage({isLogin}:{isLogin:boolean}){
     
 
 return (
-  <main className="min-h-screen bg-[#f8f8f5] px-4 py-6 text-[#191919] sm:px-8 sm:py-10">
-    {/* Navbar */}
-    <nav className="mx-auto flex max-w-6xl items-center justify-between">
-      <button
-        type="button"
-        onClick={() => router.push("/")}
-        className="flex items-center gap-2"
-      >
-        <div className="flex h-10 w-10 rotate-[-5deg] items-center justify-center rounded-xl bg-[#dfff62] text-xl font-black">
-          Q
-        </div>
-        <span className="text-2xl font-black tracking-tight">
-          quizo<span className="text-[#7656f6]">.</span>
-        </span>
-      </button>
-
-      <div className="hidden items-center gap-7 text-sm font-medium text-gray-600 sm:flex">
-        <span>Think. Play. Win.</span>
-        <span className="rounded-full border border-gray-200 px-4 py-2">
-          Your daily dose of fun ✳
-        </span>
-      </div>
-    </nav>
-
-    {/* Main content */}
-    <section className="mx-auto grid max-w-6xl items-center gap-12 py-12 md:min-h-[80vh] md:grid-cols-2 md:gap-16 md:py-16">
-
-      {/* Left side: Branding */}
-      <div className="relative">
-        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-4 py-2 text-xs font-bold uppercase tracking-wider">
-          <span className="h-2 w-2 rounded-full bg-[#a4d927]" />
-          A little curiosity goes a long way
-        </div>
-
-        <h1 className="max-w-xl text-5xl font-black leading-[1.05] tracking-[-0.055em] sm:text-6xl lg:text-7xl">
-          Less scrolling.
-          <br />
-          <span className="relative inline-block">
-            More knowing.
-            <span className="absolute -bottom-1 left-0 -z-0 h-3 w-full -rotate-1 bg-[#dfff62]" />
-          </span>
+    <main
+      className={`${font.className} flex min-h-screen flex-col bg-[#5c0f2b] px-5 py-6 text-[#ffc2d1] sm:px-12`}
+    >
+      <header>
+        <button
+          type="button"
+          onClick={() => router.push("/")}
+          className="text-[28px] font-extrabold tracking-[-0.04em] text-[#ffd24a] focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#ffc2d1]"
+        >
+          quizo
+        </button>
+      </header>
+ 
+      <section className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center pb-10">
+        <h1 className="text-[clamp(36px,7vw,56px)] font-extrabold leading-none tracking-[-0.04em] text-[#fff5f7]">
+          {isLogin ? "Back again? Nice." : "New here? Welcome."}
         </h1>
-
-        <p className="mt-7 max-w-md text-base leading-7 text-gray-600 sm:text-lg">
-          A curious mind is a superpower. Jump into quizzes, challenge your
-          friends, and see what you really know.
+        <p className="mb-8 mt-3 text-lg font-medium">
+          {isLogin
+            ? "Log in and get back to quizzing."
+            : "Make an account and start the fun."}
         </p>
-
-        {/* Quiz preview cards */}
-        <div className="relative mt-10 max-w-md">
-          <div className="rotate-[-3deg] rounded-3xl border border-black/5 bg-[#dfff62] p-5 shadow-sm transition duration-300 hover:rotate-0">
-            <div className="flex items-center justify-between">
-              <span className="rounded-full bg-black/10 px-3 py-1.5 text-xs font-bold uppercase tracking-wider">
-                Today's brain teaser
-              </span>
-              <span className="text-2xl">✳</span>
-            </div>
-
-            <h3 className="mt-5 text-xl font-extrabold sm:text-2xl">
-              How curious are you?
-            </h3>
-
-            <div className="mt-5 flex items-center justify-between border-t border-black/10 pt-4">
-              <span className="text-sm font-medium">5 questions · 2 min</span>
-              <span className="text-xl">↗</span>
-            </div>
-          </div>
-
-          <div className="absolute -right-3 -top-5 flex h-14 w-14 rotate-12 items-center justify-center rounded-2xl bg-[#7656f6] text-2xl shadow-lg sm:-right-6">
-            🧠
-          </div>
-        </div>
-
-        <div className="mt-9 flex flex-wrap gap-3">
-          <span className="rounded-full bg-[#e8e2ff] px-4 py-2 text-sm font-semibold">
-            ⚡ Quick quizzes
-          </span>
-          <span className="rounded-full bg-[#ffe5d7] px-4 py-2 text-sm font-semibold">
-            🏆 Friendly battles
-          </span>
-          <span className="rounded-full bg-white px-4 py-2 text-sm font-semibold">
-            🎯 New challenges
-          </span>
-        </div>
-      </div>
-
-      {/* Right side: Auth card */}
-      <div className="mx-auto w-full max-w-md">
-        <div className="rounded-[28px] border border-gray-200/80 bg-white p-6 shadow-[0_16px_60px_rgba(0,0,0,0.04)] sm:p-9">
-
+ 
+        <div className="rounded-[28px] border-[3px] border-[#43091f] bg-[#ffc2d1] p-6 text-[#43091f] shadow-[6px_6px_0_#ffd24a] sm:p-8">
           {/* Login / Signup switch */}
-          <div className="mb-8 flex items-center justify-between">
-            <div>
-              <p className="text-sm font-medium text-gray-500">
-                {isLogin ? "Good to see you again" : "Your fun starts here"}
-              </p>
-              <h2 className="mt-1 text-3xl font-black tracking-tight">
-                {isLogin ? "Welcome back." : "Join the club."}
-              </h2>
-            </div>
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#e8e2ff] text-2xl">
-              {isLogin ? "👋" : "✳"}
-            </div>
-          </div>
-
-          <div className="mb-7 grid grid-cols-2 rounded-xl bg-[#f5f5f2] p-1">
+          <div className="mb-6 grid grid-cols-2 gap-1 rounded-2xl border-[3px] border-[#43091f] bg-[#fff5f7] p-1">
             <button
               type="button"
               onClick={() => router.push("/login")}
-              className={`rounded-lg py-3 text-sm font-bold transition ${
+              className={`rounded-xl py-2.5 text-sm font-extrabold transition ${
                 isLogin
-                  ? "bg-white text-black shadow-sm"
-                  : "text-gray-500 hover:text-black"
+                  ? "bg-[#43091f] text-[#ffd24a]"
+                  : "text-[#43091f]/60 hover:text-[#43091f]"
               }`}
             >
               Log in
@@ -182,23 +113,20 @@ return (
             <button
               type="button"
               onClick={() => router.push("/signup")}
-              className={`rounded-lg py-3 text-sm font-bold transition ${
+              className={`rounded-xl py-2.5 text-sm font-extrabold transition ${
                 !isLogin
-                  ? "bg-white text-black shadow-sm"
-                  : "text-gray-500 hover:text-black"
+                  ? "bg-[#43091f] text-[#ffd24a]"
+                  : "text-[#43091f]/60 hover:text-[#43091f]"
               }`}
             >
               Sign up
             </button>
           </div>
-
+ 
           <form onSubmit={handleSubmit} className="space-y-5">
             {!isLogin && (
               <div>
-                <label
-                  htmlFor="name"
-                  className="mb-2 block text-sm font-bold"
-                >
+                <label htmlFor="name" className="mb-2 block text-sm font-extrabold">
                   What should we call you?
                 </label>
                 <input
@@ -209,17 +137,14 @@ return (
                   onChange={(e) => setName(e.target.value)}
                   required
                   autoComplete="name"
-                  className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3.5 text-sm outline-none transition placeholder:text-gray-400 focus:border-[#7656f6] focus:ring-4 focus:ring-[#7656f6]/10"
+                  className={inputClass}
                 />
               </div>
             )}
-
+ 
             <div>
-              <label
-                htmlFor="email"
-                className="mb-2 block text-sm font-bold"
-              >
-                Email address
+              <label htmlFor="email" className="mb-2 block text-sm font-extrabold">
+                Email
               </label>
               <input
                 id="email"
@@ -229,74 +154,60 @@ return (
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 autoComplete="email"
-                className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3.5 text-sm outline-none transition placeholder:text-gray-400 focus:border-[#7656f6] focus:ring-4 focus:ring-[#7656f6]/10"
+                className={inputClass}
               />
             </div>
-
+ 
             <div>
-              <label
-                htmlFor="password"
-                className="mb-2 block text-sm font-bold"
-              >
+              <label htmlFor="password" className="mb-2 block text-sm font-extrabold">
                 Password
               </label>
               <input
                 id="password"
                 type="password"
-                placeholder="At least your secret password"
+                placeholder="Shh, it's a secret"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 autoComplete={isLogin ? "current-password" : "new-password"}
-                className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3.5 text-sm outline-none transition placeholder:text-gray-400 focus:border-[#7656f6] focus:ring-4 focus:ring-[#7656f6]/10"
+                className={inputClass}
               />
             </div>
-
+ 
             {error && (
               <div
                 role="alert"
-                className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600"
+                className="rounded-2xl border-[3px] border-[#43091f] bg-[#43091f] px-4 py-3 text-sm font-bold text-[#ffd24a]"
               >
                 {error}
               </div>
             )}
-
+ 
             <button
               type="submit"
               disabled={loading}
-              className="group flex w-full items-center justify-center gap-3 rounded-xl bg-[#dfff62] px-5 py-4 font-extrabold transition duration-200 hover:bg-[#d1f34e] hover:shadow-lg hover:shadow-lime-200/50 disabled:cursor-not-allowed disabled:opacity-60"
+              className="w-full rounded-2xl border-[3px] border-[#43091f] bg-[#ffd24a] px-5 py-4 text-xl font-extrabold text-[#43091f] transition hover:-translate-y-0.5 hover:-rotate-1 active:translate-y-px disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:rotate-0 motion-reduce:transition-none motion-reduce:hover:transform-none"
             >
               {loading
                 ? "One sec..."
                 : isLogin
-                  ? "Let's get quizzing"
+                  ? "Let's go"
                   : "Create my account"}
-              {!loading && (
-                <span className="transition-transform group-hover:translate-x-1">
-                  →
-                </span>
-              )}
             </button>
           </form>
-
-          <p className="mt-6 text-center text-sm text-gray-500">
+ 
+          <p className="mt-6 text-center text-sm font-medium">
             {isLogin ? "New around here?" : "Already one of us?"}{" "}
             <button
               type="button"
               onClick={() => router.push(isLogin ? "/signup" : "/login")}
-              className="font-bold text-[#7656f6] hover:underline"
+              className="font-extrabold underline decoration-2 underline-offset-4"
             >
-              {isLogin ? "Join Quizo" : "Log in"}
+              {isLogin ? "Join quizo" : "Log in"}
             </button>
           </p>
         </div>
-
-        <p className="mt-5 text-center text-xs text-gray-400">
-          Made for the curious. Powered by questions. ✳
-        </p>
-      </div>
-    </section>
-  </main>
-);
-
+      </section>
+    </main>
+  );
 }
