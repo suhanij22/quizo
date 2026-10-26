@@ -4,7 +4,7 @@ import { HTTP_BACKEND } from "@/config";
 import { useRouter } from "next/navigation";
 import React , { useState } from "react";
 import { Bricolage_Grotesque } from "next/font/google";
- 
+import axios from "axios";
 
 const font = Bricolage_Grotesque({
   subsets: ["latin"],
@@ -31,21 +31,17 @@ export function AuthPage({isLogin}:{isLogin:boolean}){
         setLoading(true);
 
         try{
-            const endPoint=isLogin?"/login":"/signup";
+            const endPoint = isLogin ? "/login" : "/register";
 
             const body=isLogin?{email,password}:{name,email,password};
 
-            const response= await fetch(`${HTTP_BACKEND}${endPoint}`,{
-                method:"POST",
-                headers:{
-                    "Content-Type":"application/json"
-                },
-                body:JSON.stringify(body)
-            });
-
-            const data=await response.json();
+            const response = await axios.post(
+            `${HTTP_BACKEND}${endPoint}`,
+            body
+          );
+            const data=response.data;
             
-            if(!response.ok)
+            if(!data)
             {
                 throw new Error(data.message||"Something went wrong");
             }
@@ -62,12 +58,24 @@ export function AuthPage({isLogin}:{isLogin:boolean}){
                 router.push("/login");
             }
         }
-        catch(err)
-        {
-            setError(err instanceof Error?err.message:"unable to connect to the server");
-        }finally{
-            setLoading(false);
-        }
+        catch (err: unknown) {
+  if (axios.isAxiosError(err)) {
+    console.log("Status:", err.response?.status);
+    console.log("Backend error:", err.response?.data);
+
+    setError(
+      err.response?.data?.message ||
+      err.response?.data?.error ||
+      "Login failed"
+    );
+  } else {
+    setError(
+      err instanceof Error ? err.message : "Something went wrong"
+    );
+  }
+} finally {
+  setLoading(false);
+}
     }
 
     

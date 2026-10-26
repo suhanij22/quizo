@@ -2,11 +2,16 @@ import express from "express";
 import authRouter from "./routes/userAuth";
 import quizRouter from "./routes/quizRoute";
 import sessionRouter from "./routes/sessionRoute";
+import cors from "cors";
 
 const app= express();
 app.use(express.json());
 
-app.use("/user",authRouter);
+app.use(cors({
+  origin: "http://localhost:3000",
+}));
+
+app.use("/",authRouter);
 app.use("/quiz",quizRouter);
 app.use ("/session",sessionRouter);
 

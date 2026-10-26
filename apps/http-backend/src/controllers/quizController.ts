@@ -4,10 +4,10 @@ import { Response,Request } from "express"
 export const createQuiz= async(req:Request,res:Response)=>{
     try{
         const {title,description }=req.body;
-        if(!title||!description)
+        if(!title)
         {
             return res.status(400).json({
-                message:"title and description ont found"
+                message:"title not found"
             });
         }
         if (!req.userId) {
