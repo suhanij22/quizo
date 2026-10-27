@@ -308,7 +308,7 @@ export default function PlayQuiz({joinCode}:{joinCode:string}){
         <button
           type="button"
           onClick={() => router.push("/")}
-          className="rounded-full border-[3px] border-[#ffc2d1] px-5 py-2 text-base font-extrabold text-[#ffc2d1] transition hover:bg-[#ffc2d1] hover:text-[#43091f] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#ffc2d1]"
+          className="rounded-full border-[3px] border-[#ffc2d1] px-5 py-2 text-base font-extrabold text-[#ffc2d1] transition hover:bg-[#ffc2d1] hover:text-[#43091f] focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#ffc2d1]"
         >
           Leave
         </button>
@@ -374,7 +374,7 @@ export default function PlayQuiz({joinCode}:{joinCode:string}){
                       onClick={() => setAvatar(a)}
                       aria-pressed={avatar === a}
                       aria-label={`Avatar ${i + 1}`}
-                      className={`flex aspect-square items-center justify-center rounded-2xl border-[3px] border-[#43091f] text-3xl transition focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#ffd24a] motion-reduce:transition-none ${
+                      className={`flex aspect-square items-center justify-center rounded-2xl border-[3px] border-[#43091f] text-3xl transition focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#ffd24a] motion-reduce:transition-none ${
                         avatar === a
                           ? "scale-105 bg-[#ffd24a] shadow-[3px_3px_0_#43091f]"
                           : "bg-[#fff5f7] hover:-translate-y-0.5"
@@ -427,7 +427,7 @@ export default function PlayQuiz({joinCode}:{joinCode:string}){
               <button
                 type="submit"
                 disabled={joining || status !== "open" || !name.trim()}
-                className="w-full rounded-2xl border-[3px] border-[#43091f] bg-[#ffd24a] px-5 py-4 text-xl font-extrabold text-[#43091f] transition hover:-translate-y-0.5 hover:-rotate-1 active:translate-y-px disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:rotate-0 motion-reduce:transition-none motion-reduce:hover:transform-none focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#43091f]"
+                className="w-full rounded-2xl border-[3px] border-[#43091f] bg-[#ffd24a] px-5 py-4 text-xl font-extrabold text-[#43091f] transition hover:-translate-y-0.5 hover:-rotate-1 active:translate-y-px disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:rotate-0 motion-reduce:transition-none motion-reduce:hover:transform-none focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#43091f]"
               >
                 {joining
                   ? "Joining..."
@@ -516,7 +516,7 @@ export default function PlayQuiz({joinCode}:{joinCode:string}){
                       onClick={() => handleAnswer(option.id)}
                       disabled={locked}
                       aria-pressed={picked}
-                      className={`flex w-full items-center gap-3 rounded-2xl border-[3px] border-[#43091f] px-4 py-4 text-left text-lg font-extrabold text-[#43091f] transition motion-reduce:transition-none focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#ffd24a] ${
+                      className={`flex w-full items-center gap-3 rounded-2xl border-[3px] border-[#43091f] px-4 py-4 text-left text-lg font-extrabold text-[#43091f] transition motion-reduce:transition-none focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#ffd24a] ${
                         picked
                           ? "bg-[#ffd24a]"
                           : locked

@@ -93,7 +93,7 @@ export default function CreateQuiz(){
         <button
           type="button"
           onClick={() => router.push("/")}
-          className="text-[28px] font-extrabold tracking-[-0.04em] text-[#ffd24a] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#ffc2d1]"
+          className="text-[28px] font-extrabold tracking-[-0.04em] text-[#ffd24a] focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#ffc2d1]"
         >
           quizo
         </button>
@@ -166,7 +166,7 @@ export default function CreateQuiz(){
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-2xl border-[3px] border-[#43091f] bg-[#ffd24a] px-5 py-4 text-xl font-extrabold text-[#43091f] transition hover:-translate-y-0.5 hover:-rotate-1 active:translate-y-px disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:rotate-0 motion-reduce:transition-none motion-reduce:hover:transform-none focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#43091f]"
+            className="w-full rounded-2xl border-[3px] border-[#43091f] bg-[#ffd24a] px-5 py-4 text-xl font-extrabold text-[#43091f] transition hover:-translate-y-0.5 hover:-rotate-1 active:translate-y-px disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:rotate-0 motion-reduce:transition-none motion-reduce:hover:transform-none focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#43091f]"
           >
             {loading ? "Cooking..." : "Create quiz and add questions"}
           </button>

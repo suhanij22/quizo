@@ -43,15 +43,24 @@ return (
           quizo
         </span>
  
-        <nav className="flex min-h-[44px] items-center gap-3">
+        <nav className="flex min-h-11 items-center gap-3">
           {isLoggedIn === true && (
-            <button
-              type="button"
-              onClick={handleLogout}
-              className="rounded-full border-[3px] border-[#ffc2d1] px-5 py-2 text-base font-extrabold text-[#ffc2d1] transition hover:bg-[#ffc2d1] hover:text-[#43091f] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#ffc2d1]"
-            >
-              Log out
-            </button>
+            <>
+      <Link
+        href="/my-quizzes"
+        className="rounded-full border-[3px] border-[#43091f] bg-[#ffd24a] px-4 py-2 text-sm font-extrabold text-[#43091f] transition hover:-rotate-2 sm:text-base"
+      >
+        My quizzes
+      </Link>
+
+      <button
+        type="button"
+        onClick={handleLogout}
+        className="rounded-full border-[3px] border-[#ffc2d1] px-4 py-2 text-sm font-extrabold text-[#ffc2d1] transition hover:bg-[#ffc2d1] hover:text-[#43091f] sm:text-base"
+      >
+        Log out
+      </button>
+    </>
           )}
  
           {isLoggedIn === false && (

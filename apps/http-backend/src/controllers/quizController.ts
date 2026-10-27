@@ -144,3 +144,46 @@ export const getQuiz= async (req:Request,res:Response)=>{
         });
     }
 };
+
+export const getMyQuizzes= async(req:Request,res:Response)=>{
+    try{
+        if(!req.userId)
+        {
+            return res.status(401).json({
+                message:"user not authorized"
+            });
+        }
+
+        const quizzes= await prismaClient.quiz.findMany({
+            where:{
+                creatorId:req.userId
+            },
+            include:{
+                questions:{
+                    include:{options:true},
+                    orderBy:{order:"asc"}
+                }
+            }
+        });
+
+        if(quizzes.length===0)
+        {
+            return res.status(404).json({
+                quizzes:[],
+                message:"no quizzes found that are created by this user"
+            });
+        }
+
+        return res.status(200).json({
+            message:"quizzes created by the user",
+            quizzes
+        });
+    }
+    catch(err)
+    {
+        res.status(500).json({
+            message:"internal server error",
+            err
+        });
+    }
+}

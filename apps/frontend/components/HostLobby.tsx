@@ -193,7 +193,7 @@ export default function HostLobby({
         <button
           type="button"
           onClick={() => router.push("/")}
-          className="rounded-full border-[3px] border-[#ffc2d1] px-5 py-2 text-base font-extrabold text-[#ffc2d1] transition hover:bg-[#ffc2d1] hover:text-[#43091f] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#ffc2d1]"
+          className="rounded-full border-[3px] border-[#ffc2d1] px-5 py-2 text-base font-extrabold text-[#ffc2d1] transition hover:bg-[#ffc2d1] hover:text-[#43091f] focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#ffc2d1]"
         >
           Leave
         </button>
@@ -381,7 +381,7 @@ export default function HostLobby({
                 <button
                   type="button"
                   onClick={reconnect}
-                  className="rounded-full border-[3px] border-[#ffc2d1] px-4 py-1 font-extrabold transition hover:bg-[#ffc2d1] hover:text-[#43091f] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#ffc2d1]"
+                  className="rounded-full border-[3px] border-[#ffc2d1] px-4 py-1 font-extrabold transition hover:bg-[#ffc2d1] hover:text-[#43091f] focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#ffc2d1]"
                 >
                   Reconnect
                 </button>
@@ -424,7 +424,7 @@ export default function HostLobby({
               type="button"
               onClick={handleStart}
               disabled={!canStart}
-              className="mt-8 w-full rounded-2xl border-[3px] border-[#43091f] bg-[#ffd24a] px-5 py-5 text-2xl font-extrabold text-[#43091f] transition hover:-translate-y-0.5 hover:-rotate-1 active:translate-y-px disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:rotate-0 motion-reduce:transition-none motion-reduce:hover:transform-none focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#ffc2d1]"
+              className="mt-8 w-full rounded-2xl border-[3px] border-[#43091f] bg-[#ffd24a] px-5 py-5 text-2xl font-extrabold text-[#43091f] transition hover:-translate-y-0.5 hover:-rotate-1 active:translate-y-px disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:rotate-0 motion-reduce:transition-none motion-reduce:hover:transform-none focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#ffc2d1]"
             >
               {starting ? "Starting..." : "Start the quiz"}
             </button>

@@ -265,7 +265,7 @@ export default function AddQuestions({quizId,}: {quizId: string;})
         <button
           type="button"
           onClick={() => router.push("/")}
-          className="text-[28px] font-extrabold tracking-[-0.04em] text-[#ffd24a] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#ffc2d1]"
+          className="text-[28px] font-extrabold tracking-[-0.04em] text-[#ffd24a] focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#ffc2d1]"
         >
           quizo
         </button>
@@ -377,7 +377,7 @@ export default function AddQuestions({quizId,}: {quizId: string;})
                             onClick={() => markCorrect(index)}
                             aria-pressed={option.isCorrect}
                             aria-label={`Mark option ${index + 1} as the correct answer`}
-                            className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-[3px] border-[#43091f] text-xl font-extrabold transition focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#ffd24a] ${
+                            className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-[3px] border-[#43091f] text-xl font-extrabold transition focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#ffd24a] ${
                               option.isCorrect
                                 ? "bg-[#ffd24a] text-[#43091f]"
                                 : "bg-[#fff5f7] text-transparent hover:text-[#43091f]/30"
@@ -398,7 +398,7 @@ export default function AddQuestions({quizId,}: {quizId: string;})
                               type="button"
                               onClick={() => removeOption(index)}
                               aria-label={`Remove option ${index + 1}`}
-                              className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-2xl font-extrabold text-[#43091f]/60 transition hover:bg-[#43091f] hover:text-[#ffd24a] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#ffd24a]"
+                              className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-2xl font-extrabold text-[#43091f]/60 transition hover:bg-[#43091f] hover:text-[#ffd24a] focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#ffd24a]"
                             >
                               ×
                             </button>
@@ -411,7 +411,7 @@ export default function AddQuestions({quizId,}: {quizId: string;})
                       <button
                         type="button"
                         onClick={addOption}
-                        className="mt-4 rounded-full border-[3px] border-dashed border-[#43091f] px-5 py-2 text-sm font-extrabold transition hover:bg-[#43091f] hover:text-[#ffd24a] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#ffd24a]"
+                        className="mt-4 rounded-full border-[3px] border-dashed border-[#43091f] px-5 py-2 text-sm font-extrabold transition hover:bg-[#43091f] hover:text-[#ffd24a] focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#ffd24a]"
                       >
                         + Add option
                       </button>
@@ -430,7 +430,7 @@ export default function AddQuestions({quizId,}: {quizId: string;})
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full rounded-2xl border-[3px] border-[#43091f] bg-[#ffd24a] px-5 py-4 text-xl font-extrabold text-[#43091f] transition hover:-translate-y-0.5 hover:-rotate-1 active:translate-y-px disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:rotate-0 motion-reduce:transition-none motion-reduce:hover:transform-none focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#43091f]"
+                    className="w-full rounded-2xl border-[3px] border-[#43091f] bg-[#ffd24a] px-5 py-4 text-xl font-extrabold text-[#43091f] transition hover:-translate-y-0.5 hover:-rotate-1 active:translate-y-px disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:rotate-0 motion-reduce:transition-none motion-reduce:hover:transform-none focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#43091f]"
                   >
                     {loading ? "Saving..." : "Save question"}
                   </button>
