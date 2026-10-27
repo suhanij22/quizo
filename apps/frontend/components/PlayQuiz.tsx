@@ -101,10 +101,6 @@ export default function PlayQuiz({joinCode}:{joinCode:string}){
     const [joining,setJoining]= useState(false);
     const [myPlayerId, setMyPlayerId] = useState("");
     const [players,setPlayers]= useState<string[]>([]);
-    const [liveQuestion, setLiveQuestion] = useState<{
-    index: number;
-    total: number;
-  } | null>(null);
   const [error, setError] = useState("");
 
     // Game state
@@ -124,10 +120,12 @@ export default function PlayQuiz({joinCode}:{joinCode:string}){
 
   function handleMessage(msg: any) {
     switch (msg.type) {
+
       case "joined":
         setJoining(false);
         setError("");
         setPlayers(msg.players ?? []);
+        setMyPlayerId(msg.playerId??"");
         setPhase("waiting");
         break;
  
@@ -181,12 +179,14 @@ export default function PlayQuiz({joinCode}:{joinCode:string}){
         break;
  
       case "quiz_ended":
+        setFinalBoard(msg.leaderboard??[]);
         setPhase("ended");
         break;
  
       case "error":
         setError(msg.message);
         setJoining(false);
+        if(phase==='question'&&!answerReceived) setSelectedOptionId(null);
         break;
     }
   }
