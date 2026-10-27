@@ -31,7 +31,7 @@ export default function Dashboard() {
     if (!code) return;
 
     // Change this route to match your actual quiz-taking page.
-    router.push(`/quiz/${encodeURIComponent(code)}`);
+    router.push(`/play/${encodeURIComponent(code)}`);
   }
 
 return (

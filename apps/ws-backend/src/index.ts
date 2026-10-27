@@ -250,6 +250,7 @@ async function handleHostJoin(socket:WebSocket,ctx:Ctx,msg:Msg<"host_join">)
     //check the host's login token
     let userId:string|undefined;
     try{
+        ctx.joining=true;
         const token =msg.token.replace(/^Bearer\s+/i,"");
         const payload=jwt.verify(token,JWT_SECRET) as any;
         userId=payload.userId;
@@ -277,6 +278,7 @@ async function handleHostJoin(socket:WebSocket,ctx:Ctx,msg:Msg<"host_join">)
 async function handleJoin(socket:WebSocket,ctx:Ctx,msg:Msg<"join_session">){
     if(ctx.current||ctx.joining) return send(socket,err("already joined"));
     try{
+        ctx.joining = true;
         const username= msg.username;
         const room= await getOrCreateRoom(msg.joinCode);
         if(!room||room.status!=="WAITING")
@@ -450,7 +452,13 @@ wss.on("connection", (socket) => {
     }
  
     const parsed = ClientMessage.safeParse(json);
-    if (!parsed.success) return send(socket, err("invalid message"));
+
+if (!parsed.success) {
+  console.error("Invalid WebSocket message:", json);
+  console.error("Validation errors:", parsed.error.issues);
+
+  return send(socket, err("invalid message"));
+}
     const msg = parsed.data;
  
     try {

@@ -32,7 +32,7 @@ const arrowClass =
 export default function AddQuestions({quizId,}: {quizId: string;})
 {
     const router= useRouter();
-    
+
     const [quizTitle,setQuizTitle]=useState("");
     const [questions,setQuestions]=useState<SavedQuestion[]>([]);
     const [text,setText]=useState("");
@@ -48,6 +48,8 @@ export default function AddQuestions({quizId,}: {quizId: string;})
     const [success,setSuccess]= useState("");
     // Which page we are on. If current === questions.length, it's the "new question" form.
     const [current, setCurrent] = useState(0);
+    
+    const [hosting, setHosting] = useState(false);
 
     useEffect(()=>{
         async function loadQuiz(){
@@ -229,6 +231,32 @@ export default function AddQuestions({quizId,}: {quizId: string;})
   const viewing = isNewQuestion ? null : questions[current];
   const totalPages = questions.length + 1;
  
+   async function handleHostQuiz(){
+        try{
+            const token= localStorage.getItem("token");
+            if(!token)
+            {
+                router.push("/login");
+                return;
+            }
+            const response= await axios.post(`${HTTP_BACKEND}/session/create`,{quizId},{
+                headers:{
+                    Authorization:`Bearer ${token}`
+                }
+            });
+
+            const {joinCode,sessionId}= response.data;
+            router.push(`/session/${encodeURIComponent(sessionId)}?joinCode=${encodeURIComponent(joinCode)}`);
+        }
+        catch(err:any)
+        {
+            console.error(
+            "Failed to host quiz:",
+            err.response?.data ?? err.message
+            );
+        }
+    }
+
   return (
     <main
       className={`${font.className} flex min-h-screen flex-col bg-[#5c0f2b] px-5 py-6 text-[#ffc2d1] sm:px-12`}
@@ -244,11 +272,12 @@ export default function AddQuestions({quizId,}: {quizId: string;})
  
         {/* Change this route later, e.g. to the host page for this quiz */}
         <button
-          type="button"
-          onClick={() => router.push("/")}
-          className="rounded-full border-[3px] border-[#ffc2d1] px-5 py-2 text-base font-extrabold text-[#ffc2d1] transition hover:bg-[#ffc2d1] hover:text-[#43091f] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#ffc2d1]"
+        type="button"
+        onClick={handleHostQuiz}
+        disabled={hosting || questions.length === 0}
+        className="... your same classes ... disabled:cursor-not-allowed disabled:opacity-50"
         >
-          Done
+        {hosting ? "Opening..." : "Host this quiz"}
         </button>
       </header>
  

@@ -1,12 +1,24 @@
 import AddQuestions from "@/components/AddQuestions";
-import QuestionsPage from "@/components/AddQuestions";
+import { Suspense } from "react";
 
-export default async function Page({
+export default function Page({
   params,
 }: {
   params: Promise<{ quizId: string }>;
 }) {
+  return (
+    <Suspense fallback={<div>Loading questions page...</div>}>
+      <QuestionsContent params={params} />
+    </Suspense>
+  );
+}
 
-    const {quizId}= await params;
-  return <AddQuestions quizId={quizId}/>;
+async function QuestionsContent({
+  params,
+}: {
+  params: Promise<{ quizId: string }>;
+}) {
+  const { quizId } = await params;
+
+  return <AddQuestions quizId={quizId} />;
 }
