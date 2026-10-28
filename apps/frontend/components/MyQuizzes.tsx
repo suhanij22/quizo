@@ -104,14 +104,14 @@ export default function MyQuizzes(){
         <button
           type="button"
           onClick={() => router.push("/")}
-          className="text-[28px] font-extrabold tracking-[-0.04em] text-[#ffd24a] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#ffc2d1]"
+          className="text-[28px] font-extrabold tracking-[-0.04em] text-[#ffd24a] focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#ffc2d1]"
         >
           quizo
         </button>
  
         <Link
           href="/quiz/create"
-          className="rounded-full border-[3px] border-[#43091f] bg-[#ffd24a] px-5 py-2 text-base font-extrabold text-[#43091f] transition hover:-rotate-2 focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#ffc2d1]"
+          className="rounded-full border-[3px] border-[#43091f] bg-[#ffd24a] px-5 py-2 text-base font-extrabold text-[#43091f] transition hover:-rotate-2 focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#ffc2d1]"
         >
           + New quiz
         </Link>
@@ -144,7 +144,7 @@ export default function MyQuizzes(){
             </p>
             <Link
               href="/quiz/create"
-              className="inline-block rounded-2xl border-[3px] border-[#43091f] bg-[#ffd24a] px-6 py-3 text-lg font-extrabold transition hover:-rotate-1 focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#43091f]"
+              className="inline-block rounded-2xl border-[3px] border-[#43091f] bg-[#ffd24a] px-6 py-3 text-lg font-extrabold transition hover:-rotate-1 focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#43091f]"
             >
               Create a quiz
             </Link>
@@ -176,13 +176,13 @@ export default function MyQuizzes(){
                       onClick={() => handleHost(quiz.id)}
                       disabled={count === 0 || hostingId !== null}
                       title={count === 0 ? "Add a question first" : undefined}
-                      className="rounded-2xl border-[3px] border-[#43091f] bg-[#ffd24a] px-6 py-2.5 text-base font-extrabold transition hover:-rotate-1 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:rotate-0 motion-reduce:transition-none focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#43091f]"
+                      className="rounded-2xl border-[3px] border-[#43091f] bg-[#ffd24a] px-6 py-2.5 text-base font-extrabold transition hover:-rotate-1 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:rotate-0 motion-reduce:transition-none focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#43091f]"
                     >
                       {hostingId === quiz.id ? "Opening..." : "Host"}
                     </button>
                     <Link
                       href={`/quiz/${encodeURIComponent(quiz.id)}/questions`}
-                      className="rounded-2xl border-[3px] border-[#43091f] px-6 py-2.5 text-base font-extrabold transition hover:bg-[#43091f] hover:text-[#ffd24a] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#43091f]"
+                      className="rounded-2xl border-[3px] border-[#43091f] px-6 py-2.5 text-base font-extrabold transition hover:bg-[#43091f] hover:text-[#ffd24a] focus-visible:outline-[3px] focus-visible:outline-offset-4 focus-visible:outline-[#43091f]"
                     >
                       {count === 0 ? "Add questions" : "View questions"}
                     </Link>
